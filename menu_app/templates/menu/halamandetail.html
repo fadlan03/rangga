@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+   <center> <h1 style = "color: #ba8934;">{{Heading}}</h1></center><br>
+
+    <div class="card" style="background-color: #ba8934;">
+        <div class="row no-gutters">
+            <div class="col-md-5" style="background: #868e96;">
+                <img src=" {% static menu.gambar %}" class="card-img h-100" width = "120" alt="...">
+            </div>
+            <div class="col-md-7">
+                <div class="card-body">
+                    <h4 class="card-title">{{ menu.paket}}</h4>
+                    <h5 class="card-title">Rp {{ menu.harga}}.000</h5>
+                    <p style="text-align: justify; font-size: 15px;" class="card-text">{{ menu.pilihanmenu }}</p>
+                </div>
+            </div>
+        </div>
+    </div> <br>
+
+{% endblock %}
+

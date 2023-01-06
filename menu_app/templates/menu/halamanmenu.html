@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <a class="submit" href="/logout" style="color: red;">Logout</a>
+  <button class="navbar-toggler" type="button"></button></div>
+    <center><h1 style = "color: #ba8934;">{{ Heading }}</h1></center>
+    <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+          <img src="/static/silver.jpg" class="d-block w-50" alt="...">
+          <div class="carousel-caption d-none d-md-block" style="color:white">
+            <h3>Prasmanan</h3>
+            <h4>Paket Silver @55.000</h4>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+          <img src="/static/gold.jpg" class="d-block w-50" alt="...">
+          <div class="carousel-caption d-none d-md-block" style="color:white">
+            <h3>Prasmanan</h3>
+            <h4>Paket Gold @65.000</h4>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img src="/static/diamond.jpg" class="d-block w-50" alt="...">
+          <div class="carousel-caption d-none d-md-block"style="color:white">
+            <h3>Prasmanan</h3>
+            <p>Paket Platinum @75.000</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div> <br>
+    <a href="/createMenu" class="btn btn-success">Tambah Menu</a> <br> <br>
+    <table class="table">
+        <thead style = "background-color: #f29b05; color: brown;" >
+          <tr>
+            <th scope="col">No</th>
+            <th scope="col">Jenis</th>
+            <th scope="col">Paket</th>
+            <th scope="col">Harga</th>
+            <th scope="col">Gambar</th>
+            <th scope="col">Detail</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for dishes in menu %}
+          <tr style="background-color: #ba8934;">
+            <td>{{dishes.no}}</td>
+            <td>{{dishes.jenis_id}}</td>
+            <td>{{dishes.paket}} </td>
+            <td>Rp {{dishes.harga}}.000</td>
+            <td><img src="{% static dishes.gambar %}" width="140"></td>
+            <td><a href="{{dishes.pk}}">Lihat Detail</a> <br> <a href="update.php?id_buku=<?php echo $row['id_buku']; ?>" class="btn btn-sm 
+              btn-warning">Edit</a> 
+              <a href="delete.php?id_buku=<?php echo $row['id_buku']; ?>" class="btn btn-sm 
+              btn-danger">Delete</a></td>
+          </tr>
+            {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}
+
